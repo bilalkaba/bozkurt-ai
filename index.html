@@ -1,1 +1,67 @@
 
+<!DOCTYPE html>
+<html lang="tr">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Bozkurt AI</title>
+<style>
+*{box-sizing:border-box}
+body{margin:0;font-family:Arial,sans-serif;background:#0b1020;color:white;display:flex;justify-content:center;min-height:100vh;padding:20px}
+.app{width:100%;max-width:760px;display:flex;flex-direction:column;min-height:90vh}
+header{text-align:center;padding:24px}
+.logo{font-size:55px}
+h1{margin:8px;color:#f4f4f5}
+header p{color:#a7b0c5}
+#chat{flex:1;border:1px solid #29344c;border-radius:18px;padding:18px;overflow:auto;min-height:350px}
+.msg{padding:13px 16px;border-radius:14px;margin:12px 0;line-height:1.6;white-space:pre-wrap}
+.bot{background:#19243a;margin-right:30px}
+.user{background:#294d85;margin-left:30px}
+form{display:flex;gap:10px;margin-top:14px}
+input{flex:1;min-width:0;padding:16px;border-radius:12px;border:1px solid #34415a;background:#151d30;color:white;font-size:16px}
+button{padding:14px 18px;border:0;border-radius:12px;background:#e5a34b;color:#171717;font-weight:bold;cursor:pointer}
+button:hover{opacity:.85}
+.note{text-align:center;color:#8994aa;font-size:12px;margin:14px}
+</style>
+</head>
+<body>
+<div class="app">
+<header>
+<div class="logo">🐺</div>
+<h1>BOZKURT AI</h1>
+<p>Kişisel yapay zekâ asistanın</p>
+</header>
+<div id="chat">
+<div class="msg bot">Merhaba! Ben Bozkurt AI. 🐺
+
+Henüz yapay zekâ motoruma bağlanmadım ama sohbet ekranım hazır! Bir sonraki adımda gerçek bir yapay zekâya bağlanabiliriz.</div>
+</div>
+<form id="form">
+<input id="message" placeholder="Bozkurt AI'ye bir şey yaz..." autocomplete="off" required>
+<button type="submit">Gönder ➤</button>
+</form>
+<div class="note">Bozkurt AI • Kişisel asistan projesi</div>
+</div>
+<script>
+const chat=document.getElementById('chat');
+const form=document.getElementById('form');
+const input=document.getElementById('message');
+
+form.addEventListener('submit',function(e){
+e.preventDefault();
+const text=input.value.trim();
+if(!text)return;
+const user=document.createElement('div');
+user.className='msg user';
+user.textContent=text;
+chat.appendChild(user);
+input.value='';
+const bot=document.createElement('div');
+bot.className='msg bot';
+bot.textContent='Mesajını aldım! Gerçek cevaplar verebilmem için bir yapay zekâ API bağlantısı kurmamız gerekiyor. 🐺';
+chat.appendChild(bot);
+chat.scrollTop=chat.scrollHeight;
+});
+</script>
+</body>
+</html>
